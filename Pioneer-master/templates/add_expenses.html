@@ -1,0 +1,94 @@
+{% extends 'dashboardlayout.html' %}
+{% load static %}
+{% load bootstrap3 %}
+{% load crispy_forms_tags %}
+{% block title %}
+Add Expenses
+{% endblock %}
+{% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Static Example</title>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+  <!-- XDSoft DateTimePicker -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css" integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js" integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+    function sum()
+    {
+
+       var num1 = document.myform.diesel_rate.value;
+       var num2 = document.myform.total_buses.value;
+       var num3 = document.myform.qty_fuel.value;
+       var sum = parseInt(num1) * parseInt(num2) * parseInt(num3);
+       document.getElementById('add').value = sum;
+    }
+  </script>
+
+
+</head>
+<body>
+
+  <h3>Select Date</h3><input id="datetimepicker" type="text">
+
+  <script>
+    $(function () {
+      $("#datetimepicker").datetimepicker();
+    });
+  </script>
+
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h1 class="mt-2"></h1>
+        <hr class="mt-0 mb-4">
+      </div>
+    </div>
+  </div>
+  <div class="content-section">
+    <form action="" method="Post" name="myform">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Add Expense</legend>
+        </fieldset>
+
+        
+   
+    <div class="content-section">
+            <div class="form-group">
+                Diesel Rate        <input type="text" name="diesel_rate" title="bus_name" value=""/>
+                <br/>
+                <br/>
+                <br/>
+                No. of Buses        <input type="text" name="total_buses" title="total_buses" value=""/>
+                <br/>
+                <br/>
+                <br/>
+                Qty of fuel (in ltrs.)      <input type="text" name="qty_fuel" title="qty_fuel" value=""/>
+                <br/>
+                <br/>
+                    </br>
+                <INPUT TYPE="button" NAME="button" Value="Calculate_Expense" onClick="sum()"/>
+                <br/>
+                <br/>
+                <br/>
+                Total Expenses       <INPUT TYPE="text" ID="add" NAME="result" VALUE=""/>
+                <br/>
+                <br/>
+                <button type="submit" class="btn btn-success">Save Expense</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+  <!-- DONT TOUCH HEREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE -->
+
+
+{% endblock %}

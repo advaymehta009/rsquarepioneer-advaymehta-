@@ -1,0 +1,17 @@
+{% extends 'dashboardlayout.html' %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block content %}
+    <div class="row">
+        <head>Expense Details</head>
+        <body>
+            <table><td class="num">{{ Expense.total_price|floatformat:"2" }}</td></table>
+        
+
+                        </div> <!-- End Row --></div>
+
+                    </body>
+
+
+                {% endblock %}
